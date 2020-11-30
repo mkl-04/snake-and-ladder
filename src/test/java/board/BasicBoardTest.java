@@ -24,7 +24,7 @@ public class BasicBoardTest {
 
     @Test
     public void testCalculateNextPositionNegative() {
-        Assert.assertThrows("board position can not have negative number", NegetivePositionNotSupportedException.class, () -> basicBoard.calculateNextPosition(-1, 1));
+        Assert.assertThrows("Board position can not be negative.Passed value is = -1", NegativePositionNotSupportedException.class, () -> basicBoard.calculateNextPosition(-1, 1));
     }
 
 }
