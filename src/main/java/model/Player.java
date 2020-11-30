@@ -1,6 +1,13 @@
 package model;
 
 public class Player {
+    public Player() {
+    }
+
+    public Player(int id, int position) {
+        this.id = id;
+        this.position = position;
+    }
 
     private int id;
     private int position;

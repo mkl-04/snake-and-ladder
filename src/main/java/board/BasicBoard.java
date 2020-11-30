@@ -1,5 +1,9 @@
 package board;
 
+import dice.Dice;
+import dice.NormalDice;
+import model.Player;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,7 +16,7 @@ public class BasicBoard {
         snakePosition.put(14, 7);
     }
 
-    private Map<Integer, Integer> snakePosition;
+    private final Map<Integer, Integer> snakePosition;
 
 
     public Integer calculateNextPosition(int initialPlayerPosition, int diceValue) {
@@ -31,6 +35,19 @@ public class BasicBoard {
     }
 
     public static void main(String[] args) {
-
+        Player player1 = new Player(1, 0);
+        BasicBoard basicBoard = new BasicBoard();
+        Dice normalDice = new NormalDice();
+        for (int i = 0; i < 10; i++) {
+            int diceValue = normalDice.throwDice();
+            System.out.println("dice value " + diceValue);
+            int playerNextPosition = basicBoard.calculateNextPosition(player1.getPosition(), diceValue);
+            System.out.println("player next position " + playerNextPosition);
+            if (playerNextPosition == BOARD_WINNING_POSITION) {
+                System.out.println("Hooray!! you have reached the final point " + playerNextPosition);
+                break;
+            }
+            player1.setPosition(playerNextPosition);
+        }
     }
 }
